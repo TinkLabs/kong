@@ -7,26 +7,7 @@ networks:
 
 services:
 
-  #######################################
-  # Postgres: The database used by Kong
-  #######################################
-  kong-database:
-    image: postgres:9.6
-    restart: always
-    networks:
-      - kong-net
-    environment:
-      POSTGRES_USER: kong
-      POSTGRES_DB: kong
-    ports:
-      - "5432:5432"
-    healthcheck:
-      test: ["CMD", "pg_isready", "-U", "kong"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-
-  #######################################
+   #######################################
   # Kong database migration
   #######################################
   kong-migration:
