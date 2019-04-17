@@ -56,7 +56,7 @@ services:
   #######################################
   konga-prepare:
     image: pantsel/konga:next
-    command: "-c prepare -a postgres -u postgresql://kong@kong-database:5432/konga_db"
+    command: "-c prepare -a postgres -u postgresql://hipayadmin@hipay-api-gateway-dev.csojfhhlojxj.ap-southeast-1.rds.amazonaws.com:5432/kongdb"
     networks:
       - kong-net
     restart: on-failure
