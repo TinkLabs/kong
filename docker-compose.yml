@@ -1,4 +1,3 @@
-
 version: "3"
 
 networks:
@@ -6,22 +5,6 @@ networks:
   driver: bridge
 
 services:
-
-   #######################################
-  # Kong database migration
-  #######################################
-  kong-migration:
-    image: kong:latest
-    command: "kong migrations bootstrap"
-    networks:
-      - kong-net
-    restart: on-failure
-    environment:
-      KONG_PG_HOST: kong-database
-    links:
-      - kong-database
-    depends_on:
-      - kong-database
 
   #######################################
   # Kong: The API Gateway
@@ -37,9 +20,6 @@ services:
       KONG_PROXY_LISTEN_SSL: 0.0.0.0:8443
       KONG_ADMIN_LISTEN: 0.0.0.0:8001
       KONG_ADMIN_LISTEN_SSL: 0.0.0.0:8444
-    depends_on:
-      - kong-migration
-      - kong-database
     healthcheck:
       test: ["CMD", "curl", "-f", "http://kong:8001"]
       interval: 5s
@@ -60,10 +40,6 @@ services:
     networks:
       - kong-net
     restart: on-failure
-    links:
-      - kong-database
-    depends_on:
-      - kong-database
 
   #######################################
   # Konga: Kong GUI
@@ -75,12 +51,10 @@ services:
         - kong-net
     environment:
       DB_ADAPTER: postgres
-      DB_HOST: kong-database
-      DB_USER: kong
+      DB_HOST: hvWcwXMO65o6ICqb@hipay-api-gateway-dev.csojfhhlojxj.ap-southeast-1.rds.amazonaws.com
+      DB_USER: hipayadmin
       TOKEN_SECRET: km1GUr4RkcQD7DewhJPNXrCuZwcKmqjb
-      DB_DATABASE: konga_db
+      DB_DATABASE: kongdb
       NODE_ENV: production
-    depends_on:
-      - kong-database
     ports:
       - "1337:1337"
