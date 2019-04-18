@@ -35,7 +35,7 @@ services:
   #######################################
   konga-prepare:
     image: pantsel/konga:next
-    command: "-c prepare -a postgres -u postgresql://hipayadmin:hvWcwXMO65o6ICqb@hipay-api-gateway-dev.csojfhhlojxj.ap-southeast-1.rds.amazonaws.com:5434/kongdb"
+    command: "-c prepare -a postgres -u postgresql://hipayadmin@hipay-api-gateway-dev.csojfhhlojxj.ap-southeast-1.rds.amazonaws.com:5434/kongdb"
     networks:
       - kong-net
     restart: on-failure
@@ -50,7 +50,7 @@ services:
         - kong-net
     environment:
       DB_ADAPTER: postgres
-      DB_HOST: hvWcwXMO65o6ICqb@hipay-api-gateway-dev.csojfhhlojxj.ap-southeast-1.rds.amazonaws.com
+      DB_HOST: hipay-api-gateway-dev.csojfhhlojxj.ap-southeast-1.rds.amazonaws.com
       DB_USER: hipayadmin
       TOKEN_SECRET: km1GUr4RkcQD7DewhJPNXrCuZwcKmqjb
       DB_DATABASE: kongdb
