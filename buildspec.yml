@@ -13,8 +13,8 @@ phases:
       - export TAG_TIMESTAMP=`date +%s`
       - docker-compose up -d
       - docker tag kong:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:kong-${TAG_TIMESTAMP}
-      - docker tag konga-prepare:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:konga-prepare-${TAG_TIMESTAMP}
-      - docker tag konga:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:konga-${TAG_TIMESTAMP}
+      - docker tag pantsel/konga:next $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:konga-prepare-${TAG_TIMESTAMP}
+      - docker tag pantsel/konga:next $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:konga-${TAG_TIMESTAMP}
     post_build:
       commands:
         - echo Build completed on `date`
