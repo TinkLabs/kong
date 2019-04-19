@@ -15,7 +15,7 @@ services:
     networks:
       - kong-net
     environment:
-      KONG_DATABASE: postgres
+      KONG_DATABASE: kong
       KONG_PG_HOST: hipay-api-gateway-dev.csojfhhlojxj.ap-southeast-1.rds.amazonaws.com
       KONG_PG_PASSWORD: hvWcwXMO65o6ICqb
       KONG_PROXY_LISTEN: 0.0.0.0:8000
