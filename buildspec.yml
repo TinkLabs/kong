@@ -24,15 +24,7 @@ phases:
         - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:konga-${TAG_TIMESTAMP}
         - echo Writing image definitions file...
    #    - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $REPOSITORY_URI/$IMAGE_REPO_NAME:${TAG_TIMESTAMP} > imagedefinitions.json
-        - printf '[
-        {"name":"%s","imageUri":"%s"},
-        {"name":"%s","imageUri":"%s"},
-        {"name":"%s","imageUri":"%s"}
-        ]'
-        kong-api-gateway $REPOSITORY_URI/$IMAGE_REPO_NAME:kong-${TAG_TIMESTAMP}
-        konga-prepare $REPOSITORY_URI/$IMAGE_REPO_NAME:konga-prepare-${TAG_TIMESTAMP}
-        konga $REPOSITORY_URI/$IMAGE_REPO_NAME:konga-${TAG_TIMESTAMP}
-        > imagedefinitions.json
+        - printf '[{"name":"%s","imageUri":"%s"},{"name":"%s","imageUri":"%s"},{"name":"%s","imageUri":"%s"}]' kong-api-gateway $REPOSITORY_URI/$IMAGE_REPO_NAME:kong-${TAG_TIMESTAMP} konga-prepare $REPOSITORY_URI/$IMAGE_REPO_NAME:konga-prepare-${TAG_TIMESTAMP} konga $REPOSITORY_URI/$IMAGE_REPO_NAME:konga-${TAG_TIMESTAMP} > imagedefinitions.json
 
 artifacts:
   files:
