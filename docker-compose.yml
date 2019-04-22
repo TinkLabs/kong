@@ -17,7 +17,7 @@ services:
     environment:
       KONG_PG_DATABASE: kong
       KONG_PG_USER: hipayadmin
-      KONG_PG_HOST: hipay-api-gateway-dev.csojfhhlojxj.ap-southeast-1.rds.amazonaws.com
+      KONG_PG_HOST: 10.1.1.179
       KONG_PG_PORT: 5434
       KONG_PG_PASSWORD: hvWcwXMO65o6ICqb
       KONG_PROXY_LISTEN: 0.0.0.0:8000
@@ -45,7 +45,7 @@ services:
         - kong-net
     environment:
       DB_ADAPTER: postgres
-      DB_HOST: hipay-api-gateway-dev.csojfhhlojxj.ap-southeast-1.rds.amazonaws.com
+      DB_HOST: 10.1.1.179
       DB_PORT: 5434
       DB_USER: hipayadmin
       DB_PASSWORD: hvWcwXMO65o6ICqb
