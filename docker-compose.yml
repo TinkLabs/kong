@@ -17,6 +17,7 @@ services:
     environment:
       KONG_DATABASE: kong
       KONG_PG_HOST: hipay-api-gateway-dev.csojfhhlojxj.ap-southeast-1.rds.amazonaws.com
+      KONG_PG_PORT: 5434
       KONG_PG_PASSWORD: hvWcwXMO65o6ICqb
       KONG_PROXY_LISTEN: 0.0.0.0:8000
       KONG_PROXY_LISTEN_SSL: 0.0.0.0:8443
@@ -34,16 +35,6 @@ services:
       - "8444:8444"
 
   #######################################
-  # Konga database prepare
-  #######################################
-  konga-prepare:
-    image: pantsel/konga:next
-    command: "-c prepare -a postgres -u postgresql://hipayadmin@hipay-api-gateway-dev.csojfhhlojxj.ap-southeast-1.rds.amazonaws.com:5434/konga_db"
-    networks:
-      - kong-net
-    restart: on-failure
-
-  #######################################
   # Konga: Kong GUI
   #######################################
   konga:
@@ -54,8 +45,11 @@ services:
     environment:
       DB_ADAPTER: postgres
       DB_HOST: hipay-api-gateway-dev.csojfhhlojxj.ap-southeast-1.rds.amazonaws.com
+      DB_PORT: 5434
       DB_USER: hipayadmin
+      DB_PASSWORD: hvWcwXMO65o6ICqb
       DB_DATABASE: konga_db
+      TOKEN_SECRET: ppAjpwC2tG9b
       NODE_ENV: production
     ports:
       - "1337:1337"
