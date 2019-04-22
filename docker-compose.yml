@@ -15,6 +15,7 @@ services:
     networks:
       - kong-net
     environment:
+      KONG_DATABASE: postgres
       KONG_PG_DATABASE: kong
       KONG_PG_USER: hipayadmin
       KONG_PG_HOST: 10.1.1.179
