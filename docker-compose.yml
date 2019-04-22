@@ -15,7 +15,7 @@ services:
     networks:
       - kong-net
     environment:
-      KONG_DATABASE: kong
+      KONG_PG_DATABASE: kong
       KONG_PG_USER: hipayadmin
       KONG_PG_HOST: hipay-api-gateway-dev.csojfhhlojxj.ap-southeast-1.rds.amazonaws.com
       KONG_PG_PORT: 5434
