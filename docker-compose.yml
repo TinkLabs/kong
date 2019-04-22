@@ -16,7 +16,7 @@ services:
     restart: on-failure
     environment:
       KONG_DATABASE: postgres
-      KONG_PG_DATABASE: kong
+      KONG_PG_DATABASE: kong_dev
       KONG_PG_USER: hipayadmin
       KONG_PG_HOST: 10.1.1.179
       KONG_PG_PORT: 5434
@@ -32,7 +32,7 @@ services:
       - kong-net
     environment:
       KONG_DATABASE: postgres
-      KONG_PG_DATABASE: kong
+      KONG_PG_DATABASE: kong_dev
       KONG_PG_USER: hipayadmin
       KONG_PG_HOST: 10.1.1.179
       KONG_PG_PORT: 5434
@@ -68,7 +68,7 @@ services:
       DB_USER: hipayadmin
       DB_PASSWORD: hvWcwXMO65o6ICqb
       NODE_ENV: production
-      DB_DATABASE: konga_db
+      DB_DATABASE: konga_db_dev
     networks:
       - kong-net
 
