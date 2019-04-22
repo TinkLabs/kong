@@ -51,8 +51,8 @@ services:
       DB_PORT: 5434
       DB_USER: hipayadmin
       DB_PASSWORD: hvWcwXMO65o6ICqb
-      DB_DATABASE: konga_db
       NODE_ENV: production
+      DB_DATABASE: konga_db
     networks:
       - kong-net
 
