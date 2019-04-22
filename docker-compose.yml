@@ -41,17 +41,16 @@ services:
   #######################################
   konga:
     image: pantsel/konga:next
-    restart: always
-    networks:
-        - kong-net
+    container_name: kong-dashboard
+    links:
+      - kong:kong
     environment:
-      DB_ADAPTER: postgres
-      DB_HOST: 10.1.1.179
-      DB_PORT: 5434
-      DB_USER: hipayadmin
-      DB_PASSWORD: hvWcwXMO65o6ICqb
-      DB_DATABASE: konga_db
-      TOKEN_SECRET: ppAjpwC2tG9b
+      KONGADMIN_HOST: 10.1.1.179
+      KONGADMIN_PORT: 8001
       NODE_ENV: production
     ports:
-      - "1337:1337"
+      - 1337:1337
+    networks:
+      - kong-net
+
+
