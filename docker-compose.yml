@@ -8,7 +8,9 @@ services:
 
   kong-migration:
     image: kong:latest
-    command: kong migrations bootstrap
+    command:
+      - kong migrations bootstrap
+      - kong migrations list
     networks:
       - kong-net
     restart: on-failure
