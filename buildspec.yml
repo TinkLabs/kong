@@ -12,7 +12,7 @@ phases:
       - docker network create kong-net
       - export TAG_TIMESTAMP=`date +%s`
       - docker-compose up -d
-      - docker tag kong:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:kong-migration:-${TAG_TIMESTAMP}
+      - docker tag kong:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:kong-migration-${TAG_TIMESTAMP}
       - docker tag kong:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:kong-${TAG_TIMESTAMP}
       - docker tag pantsel/konga:next $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:konga-${TAG_TIMESTAMP}
     post_build:
