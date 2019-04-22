@@ -6,25 +6,12 @@ networks:
 
 services:
 
-  kong-migration:
-    image: kong:latest
-    command: "kong migrations up"
-    networks:
-      - kong-net
-    restart: on-failure
-    environment:
-      KONG_DATABASE: postgres
-      KONG_PG_DATABASE: kong
-      KONG_PG_USER: hipayadmin
-      KONG_PG_HOST: 10.1.1.179
-      KONG_PG_PORT: 5434
-      KONG_PG_PASSWORD: hvWcwXMO65o6ICqb
-
   #######################################
   # Kong: The API Gateway
   #######################################
   kong:
     image: kong:latest
+    command: "kong migrations bootstrap"
     restart: always
     networks:
       - kong-net
