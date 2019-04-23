@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-RUN mkdir /app
+RUN mkdir /app && mkdir /usr/local/kong/logs -p
 RUN touch /usr/local/kong/logs/access.log && touch /usr/local/kong/logs/error.log 
 COPY kong.conf /etc/kong/kong.conf
 RUN ln -sf /dev/stdout /usr/local/kong/logs/access.log && ln -sf /dev/stderr /usr/local/kong/logs/error.log
