@@ -14,6 +14,4 @@ RUN cd /app && wget https://bintray.com/kong/kong-community-edition-deb/download
 
 RUN dpkg -i /app/download_file?file_path=dists%2Fkong-community-edition-1.1.0.xenial.all.deb
 
-RUN kong migrations bootstrap -c /etc/kong/kong.conf
-
 ENTRYPOINT ["kong","start",","-c","/etc/kong/kong.conf"]
