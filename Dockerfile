@@ -1,4 +1,5 @@
 FROM centos:7.2.1511
+RUN mkdir -p /usr/local/kong/logs/ && touch /usr/local/kong/logs/{error.log,access.log}
 RUN yum update –y && yum install -y wget
 RUN wget https://github.com/Mashape/kong/releases/download/0.10.1/kong-0.10.1.aws.rpm
 RUN rpm --rebuilddb && yum install -y kong-0.10.1.aws.rpm
