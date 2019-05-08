@@ -13,8 +13,8 @@ COPY kong.conf /etc/kong/kong.conf
 RUN kong migrations list
 RUN kong migrations bootstrap -c /etc/kong/kong.conf
 
-RUN kong start -c /etc/kong/kong.conf
+# RUN kong start -c /etc/kong/kong.conf
 
 # ENTRYPOINT ["curl","-i", "http://localhost:8001/"]
 
-CMD tail -f /usr/local/kong/logs/*.log
+CMD kong start -c /etc/kong/kong.conf && tail -f /usr/local/kong/logs/*.log
