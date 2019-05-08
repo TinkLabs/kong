@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y kong
 
 COPY kong.conf /etc/kong/kong.conf
 
+RUN kong migrations list
 RUN kong migrations bootstrap -c /etc/kong/kong.conf
 
 # ENTRYPOINT ["curl","-i", "http://localhost:8001/"]
